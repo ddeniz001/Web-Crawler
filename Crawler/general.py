@@ -27,9 +27,18 @@ def create_data_files(project_name, base_url):
 # Add data in the existing file (crawled, queued files)
 def append_to_file(path, data):
     with open(path, "a") as file: # To refer to the file object
-        file.write(data, "\n")
+        file.write(data + "\n")
 
 # Delete contents of file
 def del_file_contents(path):
     with open(path, "w"):
         pass
+
+
+# Converts each line in a file to set items
+def file_to_set(file_name):
+        results = set()
+        with open(file_name, "rt") as f:
+                for line in f:
+                        results.add(line.replace("\n", ""))
+        return results
